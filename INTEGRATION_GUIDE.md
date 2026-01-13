@@ -1,7 +1,7 @@
-# Руководство по интеграции customrules
+# Руководство по интеграции power-esrules
 
 ### Структура плагина
-Плагин находится в папке `customrules/` и содержит:
+Плагин находится в папке `power-esrules/` и содержит:
 - `package.json` - метаданные плагина (версия 0.1.0)
 - `index.js` - точка входа, экспортирует правила и конфигурацию `recommended`
 - `lib/rules/` - директория с правилами:
@@ -76,7 +76,7 @@
 ```json
 {
   "devDependencies": {
-    "customrules": "file:./customrules"
+    "power-esrules": "file:./power-esrules"
   }
 }
 ```
