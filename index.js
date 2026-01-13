@@ -1,25 +1,25 @@
 module.exports = {
-    rules: {
-        'formatting-blank-lines': require('./lib/rules/formatting-blank-lines'),
-        'no-default-props': require('./lib/rules/no-default-props'),
-        'no-inline-callbacks-in-jsx': require('./lib/rules/no-inline-callbacks-in-jsx'),
-        'id-naming-convention': require('./lib/rules/id-naming-convention'),
-        'use-state-naming': require('./lib/rules/use-state-naming'),
-        'class-to-functional': require('./lib/rules/class-to-functional'),
-        'import-sorting': require('./lib/rules/import-sorting'),
+  rules: {
+    "formatting-blank-lines": require("./lib/rules/formatting-blank-lines"),
+    "no-default-props": require("./lib/rules/no-default-props"),
+    "no-inline-callbacks-in-jsx": require("./lib/rules/no-inline-callbacks-in-jsx"),
+    "id-naming-convention": require("./lib/rules/id-naming-convention"),
+    "use-state-naming": require("./lib/rules/use-state-naming"),
+    "class-to-functional": require("./lib/rules/class-to-functional"),
+    "import-sorting": require("./lib/rules/import-sorting"),
+  },
+  configs: {
+    recommended: {
+      plugins: ["power-esrules"],
+      rules: {
+        "power-esrules/formatting-blank-lines": "error",
+        "power-esrules/no-default-props": "error",
+        "power-esrules/no-inline-callbacks-in-jsx": "error",
+        "power-esrules/id-naming-convention": "error",
+        "power-esrules/use-state-naming": "error",
+        "power-esrules/class-to-functional": "error",
+        "power-esrules/import-sorting": "error",
+      },
     },
-    configs: {
-        recommended: {
-            plugins: ['rules'],
-            rules: {
-                'rules/formatting-blank-lines': 'error',
-                'rules/no-default-props': 'error',
-                'rules/no-inline-callbacks-in-jsx': 'error',
-                'rules/id-naming-convention': 'error',
-                'rules/use-state-naming': 'error',
-                'rules/class-to-functional': 'error',
-                'rules/import-sorting': 'error',
-            },
-        },
-    },
+  },
 };
