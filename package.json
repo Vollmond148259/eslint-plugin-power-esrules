@@ -1,0 +1,16 @@
+{
+    "name": "eslint-plugin-rules",
+    "version": "0.1.0",
+    "description": "custom ESLint rules",
+    "main": "index.js",
+    "peerDependencies": {
+        "eslint": "^8.0.0"
+    },
+    "keywords": [
+        "eslint",
+        "eslintplugin",
+        "lint",
+        "rules"
+    ],
+    "license": "MIT"
+}
