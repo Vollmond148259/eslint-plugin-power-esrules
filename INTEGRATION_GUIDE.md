@@ -1,7 +1,7 @@
-# Руководство по интеграции eslint-plugin-rules
+# Руководство по интеграции customrules
 
 ### Структура плагина
-Плагин находится в папке `eslint-plugin-rules/` и содержит:
+Плагин находится в папке `customrules/` и содержит:
 - `package.json` - метаданные плагина (версия 0.1.0)
 - `index.js` - точка входа, экспортирует правила и конфигурацию `recommended`
 - `lib/rules/` - директория с правилами:
@@ -76,7 +76,7 @@
 ```json
 {
   "devDependencies": {
-    "eslint-plugin-rules": "file:./eslint-plugin-rules"
+    "customrules": "file:./customrules"
   }
 }
 ```
