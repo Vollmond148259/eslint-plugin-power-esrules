@@ -1,5 +1,5 @@
 {
-  "name": "power-esrules",
+  "name": "eslint-plugin-power-esrules",
   "version": "0.1.1",
   "description": "custom ESLint rules",
   "main": "index.js",
@@ -21,11 +21,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vollmond148259/power-esrules.git"
+    "url": "git+https://github.com/Vollmond148259/eslint-plugin-power-esrules.git"
   },
   "author": "vollmond148",
   "bugs": {
-    "url": "https://github.com/Vollmond148259/power-esrules/issues"
+    "url": "https://github.com/Vollmond148259/eslint-plugin-power-esrules/issues"
   },
-  "homepage": "https://github.com/Vollmond148259/power-esrules#readme"
+  "homepage": "https://github.com/Vollmond148259/eslint-plugin-power-esrules#readme"
 }

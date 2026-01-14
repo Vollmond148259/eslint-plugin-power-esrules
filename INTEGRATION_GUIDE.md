@@ -1,7 +1,7 @@
-# Руководство по интеграции power-esrules
+# Руководство по интеграции eslint-plugin-power-esrules
 
 ### Структура плагина
-Плагин находится в папке `power-esrules/` и содержит:
+Плагин содержит:
 - `package.json` - метаданные плагина (версия 0.1.0)
 - `index.js` - точка входа, экспортирует правила и конфигурацию `recommended`
 - `lib/rules/` - директория с правилами:
@@ -68,18 +68,7 @@
 
 ## Что нужно для интеграции
 
-### 1. Добавить плагин в package.json
-
-Плагин нужно добавить как зависимость.
-
-#### Вариант A: Локальная зависимость (рекомендуется для разработки)
-```json
-{
-  "devDependencies": {
-    "power-esrules": "file:./power-esrules"
-  }
-}
-```
+### 1. npm install eslint-plugin-power-esrules
 
 ### 2. Обновить .eslintrc.js
 
@@ -90,7 +79,7 @@ module.exports = {
         'airbnb', 
         'airbnb/hooks', 
         'prettier',
-        'plugin:rules/recommended' // Добавить конфигурацию плагина
+        'plugin:power-esrules/recommended' // Добавить конфигурацию плагина
     ],
     parser: '@babel/eslint-parser',
     // ...
