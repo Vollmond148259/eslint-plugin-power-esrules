@@ -7,6 +7,7 @@ module.exports = {
     "use-state-naming": require("./lib/rules/use-state-naming"),
     "class-to-functional": require("./lib/rules/class-to-functional"),
     "import-sorting": require("./lib/rules/import-sorting"),
+    "require-data-testid": require("./lib/rules/require-data-testid"),
   },
   configs: {
     recommended: {
@@ -19,6 +20,7 @@ module.exports = {
         "power-esrules/use-state-naming": "error",
         "power-esrules/class-to-functional": "error",
         "power-esrules/import-sorting": "error",
+        "power-esrules/require-data-testid": "error",
       },
     },
   },
