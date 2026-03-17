@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-power-esrules",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "custom ESLint rules",
   "main": "index.js",
   "peerDependencies": {
