@@ -20,7 +20,7 @@ module.exports = {
         "power-esrules/use-state-naming": "warn",
         "power-esrules/class-to-functional": "error",
         "power-esrules/import-sorting": "error",
-        "power-esrules/require-data-testid": "error",
+        "power-esrules/require-data-testid": "warn",
       },
     },
   },
