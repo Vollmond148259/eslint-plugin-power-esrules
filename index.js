@@ -7,6 +7,7 @@ module.exports = {
     "use-state-naming": require("./lib/rules/use-state-naming"),
     "class-to-functional": require("./lib/rules/class-to-functional"),
     "import-sorting": require("./lib/rules/import-sorting"),
+    "props-destructuring-sort": require("./lib/rules/props-destructuring-sort"),
     "require-data-testid": require("./lib/rules/require-data-testid"),
   },
   configs: {
@@ -20,6 +21,7 @@ module.exports = {
         "power-esrules/use-state-naming": "warn",
         "power-esrules/class-to-functional": "error",
         "power-esrules/import-sorting": "error",
+        "power-esrules/props-destructuring-sort": "error",
         "power-esrules/require-data-testid": "warn",
       },
     },
