@@ -20,6 +20,16 @@ ruleTester.run("require-data-testid", rule, {
       `,
     },
     {
+      name: "class component with data-testid",
+      code: `
+      class MyComponent extends PureComponent {
+        render() {
+          return <div data-testid="my-component">Hello</div>;
+        }
+      }
+      `,
+    },
+    {
       name: "arrow component with dataTestID",
       code: `
         const MyComponent = () => <section dataTestID="section">Hi</section>;
@@ -64,6 +74,17 @@ ruleTester.run("require-data-testid", rule, {
         function MyComponent() {
           return <div>Hello</div>;
         }
+      `,
+      errors: [{ messageId: "missingDataTestId" }],
+    },
+    {
+      name: "class component without data-testid",
+      code: `
+      class MyComponent extends PureComponent {
+        render() {
+          return <div>Hello</div>;
+        }
+      }
       `,
       errors: [{ messageId: "missingDataTestId" }],
     },
