@@ -1,13 +1,56 @@
+const espree = require("espree");
 const { RuleTester } = require("eslint");
 const rule = require("../lib/rules/props-destructuring-sort");
 
+const defaultParserOptions = {
+  ecmaVersion: 2022,
+  sourceType: "module",
+  ecmaFeatures: { jsx: true },
+};
+
 const ruleTester = new RuleTester({
-  parserOptions: {
-    ecmaVersion: 2022,
-    sourceType: "module",
-    ecmaFeatures: { jsx: true },
-  },
+  parserOptions: defaultParserOptions,
 });
+
+function rewriteRestElementsToExperimentalRestProperty(node) {
+  if (!node || typeof node !== "object") {
+    return;
+  }
+  if (node.type === "RestElement") {
+    node.type = "ExperimentalRestProperty";
+  }
+  for (const key of Object.keys(node)) {
+    if (key === "parent") {
+      continue;
+    }
+    const value = node[key];
+    if (!value) {
+      continue;
+    }
+    if (Array.isArray(value)) {
+      for (const item of value) {
+        rewriteRestElementsToExperimentalRestProperty(item);
+      }
+    } else if (typeof value === "object" && value.type) {
+      rewriteRestElementsToExperimentalRestProperty(value);
+    }
+  }
+}
+
+const babelLegacyRestParser = {
+  parse(code, options) {
+    const ast = espree.parse(code, {
+      ecmaVersion: options.ecmaVersion,
+      sourceType: options.sourceType,
+      loc: true,
+      range: true,
+      tokens: true,
+      ecmaFeatures: options.ecmaFeatures,
+    });
+    rewriteRestElementsToExperimentalRestProperty(ast);
+    return ast;
+  },
+};
 
 ruleTester.run("props-destructuring-sort", rule, {
   valid: [
@@ -139,6 +182,53 @@ ruleTester.run("props-destructuring-sort", rule, {
       function MyComponent(props) {
         const { alpha, zebra, ...rest } = props;
         return <div>{zebra}</div>;
+      }
+    `,
+      errors: [{ messageId: "incorrectOrder" }],
+    },
+    {
+      name: "rest stays last when sorting three props",
+      code: `
+      function MyComponent(props) {
+        const { c, b, a, ...d } = props;
+        return <div>{a}</div>;
+      }
+    `,
+      output: `
+      function MyComponent(props) {
+        const { a, b, c, ...d } = props;
+        return <div>{a}</div>;
+      }
+    `,
+      errors: [{ messageId: "incorrectOrder" }],
+    },
+    {
+      name: "rest stays last with babel legacy ExperimentalRestProperty AST",
+      parser: babelLegacyRestParser,
+      code: `
+      function MyComponent(props) {
+        const { c, b, a, ...d } = props;
+        return <div>{a}</div>;
+      }
+    `,
+      output: `
+      function MyComponent(props) {
+        const { a, b, c, ...d } = props;
+        return <div>{a}</div>;
+      }
+    `,
+      errors: [{ messageId: "incorrectOrder" }],
+    },
+    {
+      name: "rest stays last in destructured params",
+      code: `
+      function MyComponent({ c, b, a, ...d }) {
+        return <div>{a}</div>;
+      }
+    `,
+      output: `
+      function MyComponent({ a, b, c, ...d }) {
+        return <div>{a}</div>;
       }
     `,
       errors: [{ messageId: "incorrectOrder" }],
